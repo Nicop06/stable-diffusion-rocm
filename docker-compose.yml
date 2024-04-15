@@ -1,0 +1,19 @@
+services:
+  webui:
+    build:
+      context: .
+    network_mode: host
+    ipc: host
+    shm_size: 8G
+    security_opt:
+      - seccomp=unconfined
+    cap_add:
+      - SYS_PTRACE
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    volumes:
+      -  models:/root/stable-diffusion-webui/models
+
+volumes:
+  models:
